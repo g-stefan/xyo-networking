@@ -13,7 +13,7 @@
 
 namespace XYO::Networking::Network {
 
-			XYO_NETWORKING_EXPORT bool isValid();
+	XYO_NETWORKING_EXPORT bool isValid();
 
 };
 

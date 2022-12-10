@@ -11,19 +11,19 @@
 #	include <XYO/Networking/Dependency.hpp>
 #endif
 
-namespace XYO::Networking {		
+namespace XYO::Networking {
 
-		class IP6 : public Object {
-				XYO_DISALLOW_COPY_ASSIGN_MOVE(IP6);
+	class IP6 : public Object {
+			XYO_DISALLOW_COPY_ASSIGN_MOVE(IP6);
 
-			public:
-				uint8_t ip[16];
+		public:
+			uint8_t ip[16];
 
-				XYO_NETWORKING_EXPORT IP6();
-				XYO_NETWORKING_EXPORT void copy(IP6 &ip_);
-				XYO_NETWORKING_EXPORT bool isInTheSameNetwork(IP6 &ip_, IP6 &mask_);
-		};
-	
+			XYO_NETWORKING_EXPORT IP6();
+			XYO_NETWORKING_EXPORT void copy(IP6 &ip_);
+			XYO_NETWORKING_EXPORT bool isInTheSameNetwork(IP6 &ip_, IP6 &mask_);
+	};
+
 };
 
 #endif

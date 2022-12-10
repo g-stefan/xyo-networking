@@ -16,7 +16,6 @@ namespace XYO::Networking::Copyright {
 	XYO_NETWORKING_EXPORT const char *publisher();
 	XYO_NETWORKING_EXPORT const char *company();
 	XYO_NETWORKING_EXPORT const char *contact();
-	XYO_NETWORKING_EXPORT const char *fullCopyright();
 };
 
 #endif

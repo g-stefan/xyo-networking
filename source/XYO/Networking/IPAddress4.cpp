@@ -8,13 +8,13 @@
 
 namespace XYO::Networking {
 
-		IPAddress4::IPAddress4() {
-			port = 0;
-		};
+	IPAddress4::IPAddress4() {
+		port = 0;
+	};
 
-		void IPAddress4::copy(IPAddress4 &addr) {
-			ip.copy(addr.ip);
-			port = addr.port;
-		};
-	
+	void IPAddress4::copy(IPAddress4 &addr) {
+		ip.copy(addr.ip);
+		port = addr.port;
+	};
+
 };

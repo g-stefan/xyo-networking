@@ -13,17 +13,17 @@
 
 namespace XYO::Networking {
 
-		class IPAddress4 : public Object {
-				XYO_DISALLOW_COPY_ASSIGN_MOVE(IPAddress4);
+	class IPAddress4 : public Object {
+			XYO_DISALLOW_COPY_ASSIGN_MOVE(IPAddress4);
 
-			public:
-				IP4 ip;
-				uint16_t port;
+		public:
+			IP4 ip;
+			uint16_t port;
 
-				XYO_NETWORKING_EXPORT IPAddress4();
-				XYO_NETWORKING_EXPORT void copy(IPAddress4 &addr);
-		};
-	
+			XYO_NETWORKING_EXPORT IPAddress4();
+			XYO_NETWORKING_EXPORT void copy(IPAddress4 &addr);
+	};
+
 };
 
 #endif

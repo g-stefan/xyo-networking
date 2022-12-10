@@ -11,16 +11,16 @@
 #	include <XYO/Networking/Dependency.hpp>
 #endif
 
-namespace XYO::Networking::URL {			
+namespace XYO::Networking::URL {
 
-			XYO_NETWORKING_EXPORT String decodeComponent(const String &value);
-			XYO_NETWORKING_EXPORT String encodeComponent(const String &value);
-			XYO_NETWORKING_EXPORT bool getSchemeName(const String &url, String &out);
-			XYO_NETWORKING_EXPORT bool getHostNameAndPort(const String &url, String &out);
-			XYO_NETWORKING_EXPORT bool getUsernameAndPassword(const String &url, String &out);
-			XYO_NETWORKING_EXPORT bool getPathAndFileName(const String &url, String &out);
-			XYO_NETWORKING_EXPORT bool getQuery(const String &url, String &out);
-		
+	XYO_NETWORKING_EXPORT String decodeComponent(const String &value);
+	XYO_NETWORKING_EXPORT String encodeComponent(const String &value);
+	XYO_NETWORKING_EXPORT bool getSchemeName(const String &url, String &out);
+	XYO_NETWORKING_EXPORT bool getHostNameAndPort(const String &url, String &out);
+	XYO_NETWORKING_EXPORT bool getUsernameAndPassword(const String &url, String &out);
+	XYO_NETWORKING_EXPORT bool getPathAndFileName(const String &url, String &out);
+	XYO_NETWORKING_EXPORT bool getQuery(const String &url, String &out);
+
 };
 
 #endif

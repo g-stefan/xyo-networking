@@ -13,7 +13,6 @@ namespace XYO::Networking::Copyright {
 	static const char *publisher_ = XYO_NETWORKING_PUBLISHER;
 	static const char *company_ = XYO_NETWORKING_COMPANY;
 	static const char *contact_ = XYO_NETWORKING_CONTACT;
-	static const char *fullCopyright_ = XYO_NETWORKING_FULL_COPYRIGHT;
 
 	const char *copyright() {
 		return copyright_;
@@ -29,10 +28,6 @@ namespace XYO::Networking::Copyright {
 
 	const char *contact() {
 		return contact_;
-	};
-
-	const char *fullCopyright() {
-		return fullCopyright_;
 	};
 
 };

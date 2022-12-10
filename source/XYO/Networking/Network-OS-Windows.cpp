@@ -16,35 +16,35 @@
 
 #	include <XYO/Networking/Network.hpp>
 
-namespace XYO::Networking::Network {			
+namespace XYO::Networking::Network {
 
-			class Network_ {
-				public:
-					bool isValid;
+	class Network_ {
+		public:
+			bool isValid;
 
-					Network_();
-					~Network_();
-			};
+			Network_();
+			~Network_();
+	};
 
-			Network_::Network_() {
-				isValid = false;
-				WSADATA wsaData;
-				WORD wVersionRequested = MAKEWORD(2, 2);
-				if (WSAStartup(wVersionRequested, &wsaData) == 0) {
-					isValid = true;
-				};
-			};
+	Network_::Network_() {
+		isValid = false;
+		WSADATA wsaData;
+		WORD wVersionRequested = MAKEWORD(2, 2);
+		if (WSAStartup(wVersionRequested, &wsaData) == 0) {
+			isValid = true;
+		};
+	};
 
-			Network_::~Network_() {
-				if (isValid) {
-					WSACleanup();
-				};
-			};
+	Network_::~Network_() {
+		if (isValid) {
+			WSACleanup();
+		};
+	};
 
-			bool isValid() {
-				return (TSingletonProcess<Network_>::getValue())->isValid;
-			};
-		
+	bool isValid() {
+		return (TSingletonProcess<Network_>::getValue())->isValid;
+	};
+
 };
 
 #endif

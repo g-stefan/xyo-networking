@@ -14,9 +14,9 @@
 
 namespace XYO::Networking::Network {
 
-			bool isValid() {
-				return true;
-			};
+	bool isValid() {
+		return true;
+	};
 
 };
 

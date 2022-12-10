@@ -12,18 +12,18 @@
 #endif
 
 namespace XYO::Networking {
-		using namespace XYO::ManagedMemory;
+	using namespace XYO::ManagedMemory;
 
-		class IPAddress6 : public Object {
-				XYO_DISALLOW_COPY_ASSIGN_MOVE(IPAddress6);
+	class IPAddress6 : public Object {
+			XYO_DISALLOW_COPY_ASSIGN_MOVE(IPAddress6);
 
-			public:
-				IP6 ip;
-				uint16_t port;
+		public:
+			IP6 ip;
+			uint16_t port;
 
-				XYO_NETWORKING_EXPORT IPAddress6();
-				XYO_NETWORKING_EXPORT void copy(IPAddress6 &addr);
-		};
+			XYO_NETWORKING_EXPORT IPAddress6();
+			XYO_NETWORKING_EXPORT void copy(IPAddress6 &addr);
+	};
 
 };
 
