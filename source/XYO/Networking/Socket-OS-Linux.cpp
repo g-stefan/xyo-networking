@@ -17,6 +17,7 @@
 #	include <arpa/inet.h>
 #	include <netdb.h>
 
+#	include <XYO/Networking/Network.hpp>
 #	include <XYO/Networking/Socket.hpp>
 #	include <XYO/Networking/URL.hpp>
 
