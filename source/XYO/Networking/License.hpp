@@ -13,8 +13,8 @@
 
 namespace XYO::Networking::License {
 
-	XYO_NETWORKING_EXPORT const char *license();
-	XYO_NETWORKING_EXPORT const char *shortLicense();
+	XYO_NETWORKING_EXPORT std::string license();
+	XYO_NETWORKING_EXPORT std::string shortLicense();
 
 };
 
