@@ -387,23 +387,23 @@ namespace XYO::Networking {
 			urlHostAndPort = adr_;
 		};
 		urlAddress = urlHostAndPort;
-		if (!String::split2FromEnd(urlHostAndPort, ":", urlAddress, urlPort)) {
-			if (String::matchAscii(urlSchemeName, "http")) {
+		if (!StringX::split2FromEnd(urlHostAndPort, ":", urlAddress, urlPort)) {
+			if (StringX::matchAscii(urlSchemeName, "http")) {
 				urlPort = "80";
-			} else if (String::matchAscii(urlSchemeName, "https")) {
+			} else if (StringX::matchAscii(urlSchemeName, "https")) {
 				urlPort = "443";
-			} else if (String::matchAscii(urlSchemeName, "ftp")) {
+			} else if (StringX::matchAscii(urlSchemeName, "ftp")) {
 				urlPort = "20";
-			} else if (String::matchAscii(urlSchemeName, "ssh")) {
+			} else if (StringX::matchAscii(urlSchemeName, "ssh")) {
 				urlPort = "22";
-			} else if (String::matchAscii(urlSchemeName, "telnet")) {
+			} else if (StringX::matchAscii(urlSchemeName, "telnet")) {
 				urlPort = "23";
 			} else {
 				return false;
 			};
 		};
 		if (urlAddress[0] == '[') {
-			urlAddress = String::substring(urlAddress, 1, urlAddress.length() - 2);
+			urlAddress = StringX::substring(urlAddress, 1, urlAddress.length() - 2);
 		};
 		if (sscanf(urlPort, "%d", &port) != 1) {
 			return false;
@@ -485,23 +485,23 @@ namespace XYO::Networking {
 			urlHostAndPort = adr_;
 		};
 		urlAddress = urlHostAndPort;
-		if (!String::split2FromEnd(urlHostAndPort, ":", urlAddress, urlPort)) {
-			if (String::matchAscii(urlSchemeName, "http")) {
+		if (!StringX::split2FromEnd(urlHostAndPort, ":", urlAddress, urlPort)) {
+			if (StringX::matchAscii(urlSchemeName, "http")) {
 				urlPort = "80";
-			} else if (String::matchAscii(urlSchemeName, "https")) {
+			} else if (StringX::matchAscii(urlSchemeName, "https")) {
 				urlPort = "443";
-			} else if (String::matchAscii(urlSchemeName, "ftp")) {
+			} else if (StringX::matchAscii(urlSchemeName, "ftp")) {
 				urlPort = "20";
-			} else if (String::matchAscii(urlSchemeName, "ssh")) {
+			} else if (StringX::matchAscii(urlSchemeName, "ssh")) {
 				urlPort = "22";
-			} else if (String::matchAscii(urlSchemeName, "telnet")) {
+			} else if (StringX::matchAscii(urlSchemeName, "telnet")) {
 				urlPort = "23";
 			} else {
 				return false;
 			};
 		};
 		if (urlAddress[0] == '[') {
-			urlAddress = String::substring(urlAddress, 1, urlAddress.length() - 2);
+			urlAddress = StringX::substring(urlAddress, 1, urlAddress.length() - 2);
 		};
 		if (sscanf(urlPort, "%d", &port) != 1) {
 			return false;

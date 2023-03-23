@@ -12,10 +12,10 @@
 #endif
 
 namespace XYO::Networking::Copyright {
-	XYO_NETWORKING_EXPORT std::string copyright();
-	XYO_NETWORKING_EXPORT std::string publisher();
-	XYO_NETWORKING_EXPORT std::string company();
-	XYO_NETWORKING_EXPORT std::string contact();
+	XYO_NETWORKING_EXPORT const char *copyright();
+	XYO_NETWORKING_EXPORT const char *publisher();
+	XYO_NETWORKING_EXPORT const char *company();
+	XYO_NETWORKING_EXPORT const char *contact();
 };
 
 #endif

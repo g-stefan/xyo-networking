@@ -45,7 +45,7 @@ namespace XYO::Networking::URL {
 	bool getSchemeName(const String &url, String &out) {
 		size_t index;
 		if (StringCore::indexOf(url, "://", index)) {
-			out = String::substring(url, 0, index);
+			out = StringX::substring(url, 0, index);
 			return true;
 		};
 		return false;
@@ -58,14 +58,14 @@ namespace XYO::Networking::URL {
 		String secondPart;
 		if (StringCore::indexOf(url, "://", index)) {
 			if (StringCore::indexOf(url, "/", index + 3, part)) {
-				if (String::split2(String::substring(url, index + 3, part - (index + 3)), "@", firstPart, secondPart)) {
+				if (StringX::split2(StringX::substring(url, index + 3, part - (index + 3)), "@", firstPart, secondPart)) {
 					out = secondPart;
 					return true;
 				};
-				out = String::substring(url, index + 3, part - (index + 3));
+				out = StringX::substring(url, index + 3, part - (index + 3));
 				return true;
 			};
-			out = String::substring(url, index + 3);
+			out = StringX::substring(url, index + 3);
 			return true;
 		};
 		return false;
@@ -78,7 +78,7 @@ namespace XYO::Networking::URL {
 		String secondPart;
 		if (StringCore::indexOf(url, "://", index)) {
 			if (StringCore::indexOf(url, "/", index + 3, part)) {
-				if (String::split2(String::substring(url, index + 3, part - (index + 3)), "@", firstPart, secondPart)) {
+				if (StringX::split2(StringX::substring(url, index + 3, part - (index + 3)), "@", firstPart, secondPart)) {
 					out = firstPart;
 					return true;
 				};
@@ -94,11 +94,11 @@ namespace XYO::Networking::URL {
 		String secondPart;
 		if (StringCore::indexOf(url, "://", index)) {
 			if (StringCore::indexOf(url, "/", index + 3, part)) {
-				if (String::split2(String::substring(url, part), "?", firstPart, secondPart)) {
+				if (StringX::split2(StringX::substring(url, part), "?", firstPart, secondPart)) {
 					out = firstPart;
 					return true;
 				};
-				out = String::substring(url, part);
+				out = StringX::substring(url, part);
 				return true;
 			};
 			out = "/";
@@ -113,10 +113,10 @@ namespace XYO::Networking::URL {
 		String firstPart;
 		String secondPart;
 		String thirdPart;
-		if (String::indexOf(url, "://", 0, index)) {
+		if (StringX::indexOf(url, "://", 0, index)) {
 			if (StringCore::indexOf(url, "/", index + 3, part)) {
-				if (String::split2(String::substring(url, part + 1), "?", firstPart, secondPart)) {
-					if (String::split2(secondPart, "#", firstPart, thirdPart)) {
+				if (StringX::split2(StringX::substring(url, part + 1), "?", firstPart, secondPart)) {
+					if (StringX::split2(secondPart, "#", firstPart, thirdPart)) {
 						out = firstPart;
 						return true;
 					};
