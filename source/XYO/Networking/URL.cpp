@@ -45,7 +45,7 @@ namespace XYO::Networking::URL {
 	bool getSchemeName(const String &url, String &out) {
 		size_t index;
 		if (StringCore::indexOf(url, "://", index)) {
-			out = url.substring( 0, index);
+			out = url.substring(0, index);
 			return true;
 		};
 		return false;
@@ -58,14 +58,14 @@ namespace XYO::Networking::URL {
 		String secondPart;
 		if (StringCore::indexOf(url, "://", index)) {
 			if (StringCore::indexOf(url, "/", index + 3, part)) {
-				if (url.substring( index + 3, part - (index + 3)).split2("@", firstPart, secondPart)) {
+				if (url.substring(index + 3, part - (index + 3)).split2("@", firstPart, secondPart)) {
 					out = secondPart;
 					return true;
 				};
-				out = url.substring( index + 3, part - (index + 3));
+				out = url.substring(index + 3, part - (index + 3));
 				return true;
 			};
-			out = url.substring( index + 3);
+			out = url.substring(index + 3);
 			return true;
 		};
 		return false;
@@ -78,7 +78,7 @@ namespace XYO::Networking::URL {
 		String secondPart;
 		if (StringCore::indexOf(url, "://", index)) {
 			if (StringCore::indexOf(url, "/", index + 3, part)) {
-				if (url.substring( index + 3, part - (index + 3)).split2( "@", firstPart, secondPart)) {
+				if (url.substring(index + 3, part - (index + 3)).split2("@", firstPart, secondPart)) {
 					out = firstPart;
 					return true;
 				};
@@ -94,11 +94,11 @@ namespace XYO::Networking::URL {
 		String secondPart;
 		if (StringCore::indexOf(url, "://", index)) {
 			if (StringCore::indexOf(url, "/", index + 3, part)) {
-				if (url.substring( part).split2( "?", firstPart, secondPart)) {
+				if (url.substring(part).split2("?", firstPart, secondPart)) {
 					out = firstPart;
 					return true;
 				};
-				out = url.substring( part);
+				out = url.substring(part);
 				return true;
 			};
 			out = "/";
@@ -113,10 +113,10 @@ namespace XYO::Networking::URL {
 		String firstPart;
 		String secondPart;
 		String thirdPart;
-		if (url.indexOf( "://", 0, index)) {
+		if (url.indexOf("://", 0, index)) {
 			if (StringCore::indexOf(url, "/", index + 3, part)) {
-				if (url.substring( part + 1).split2( "?", firstPart, secondPart)) {
-					if (secondPart.split2( "#", firstPart, thirdPart)) {
+				if (url.substring(part + 1).split2("?", firstPart, secondPart)) {
+					if (secondPart.split2("#", firstPart, thirdPart)) {
 						out = firstPart;
 						return true;
 					};

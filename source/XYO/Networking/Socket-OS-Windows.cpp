@@ -381,23 +381,23 @@ namespace XYO::Networking {
 			urlHostAndPort = adr_;
 		};
 		urlAddress = urlHostAndPort;
-		if (!urlHostAndPort.split2FromEnd( ":", urlAddress, urlPort)) {
-			if (urlSchemeName.matchAscii( "http")) {
+		if (!urlHostAndPort.split2FromEnd(":", urlAddress, urlPort)) {
+			if (urlSchemeName.matchAscii("http")) {
 				urlPort = "80";
-			} else if (urlSchemeName.matchAscii( "https")) {
+			} else if (urlSchemeName.matchAscii("https")) {
 				urlPort = "443";
-			} else if (urlSchemeName.matchAscii( "ftp")) {
+			} else if (urlSchemeName.matchAscii("ftp")) {
 				urlPort = "20";
-			} else if (urlSchemeName.matchAscii( "ssh")) {
+			} else if (urlSchemeName.matchAscii("ssh")) {
 				urlPort = "22";
-			} else if (urlSchemeName.matchAscii( "telnet")) {
+			} else if (urlSchemeName.matchAscii("telnet")) {
 				urlPort = "23";
 			} else {
 				return false;
 			};
 		};
 		if (urlAddress[0] == '[') {
-			urlAddress = urlAddress.substring( 1, urlAddress.length() - 2);
+			urlAddress = urlAddress.substring(1, urlAddress.length() - 2);
 		};
 		if (sscanf(urlPort, "%d", &port) != 1) {
 			return false;
@@ -479,23 +479,23 @@ namespace XYO::Networking {
 			urlHostAndPort = adr_;
 		};
 		urlAddress = urlHostAndPort;
-		if (!urlHostAndPort.split2FromEnd( ":", urlAddress, urlPort)) {
-			if (urlSchemeName.matchAscii( "http")) {
+		if (!urlHostAndPort.split2FromEnd(":", urlAddress, urlPort)) {
+			if (urlSchemeName.matchAscii("http")) {
 				urlPort = "80";
-			} else if (urlSchemeName.matchAscii( "https")) {
+			} else if (urlSchemeName.matchAscii("https")) {
 				urlPort = "443";
-			} else if (urlSchemeName.matchAscii( "ftp")) {
+			} else if (urlSchemeName.matchAscii("ftp")) {
 				urlPort = "20";
-			} else if (urlSchemeName.matchAscii( "ssh")) {
+			} else if (urlSchemeName.matchAscii("ssh")) {
 				urlPort = "22";
-			} else if (urlSchemeName.matchAscii( "telnet")) {
+			} else if (urlSchemeName.matchAscii("telnet")) {
 				urlPort = "23";
 			} else {
 				return false;
 			};
 		};
 		if (urlAddress[0] == '[') {
-			urlAddress = urlAddress.substring( 1, urlAddress.length() - 2);
+			urlAddress = urlAddress.substring(1, urlAddress.length() - 2);
 		};
 		if (sscanf(urlPort, "%d", &port) != 1) {
 			return false;
