@@ -43,14 +43,6 @@ namespace XYO::Networking {
 	Socket::~Socket() {
 		close();
 		delete this_;
-
-		if (ipAddress) {
-			if (ipAddressIs6) {
-				delete reinterpret_cast<IPAddress6 *>(ipAddress);
-			} else {
-				delete reinterpret_cast<IPAddress4 *>(ipAddress);
-			};
-		};
 	};
 
 	Socket::operator bool() const {
