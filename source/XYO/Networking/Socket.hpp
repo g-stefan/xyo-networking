@@ -29,8 +29,7 @@ namespace XYO::Networking {
 			XYO_DISALLOW_COPY_ASSIGN_MOVE(Socket);
 
 		protected:
-			Socket_ *this_;
-			Socket *linkOwner_;
+			Socket_ *this_;			
 			IPAddress_ *ipAddress;
 			bool ipAddressIs6;
 
@@ -59,11 +58,7 @@ namespace XYO::Networking {
 			XYO_NETWORKING_EXPORT bool isIPAddress6();
 			XYO_NETWORKING_EXPORT bool getIPAddress4(IPAddress4 &);
 			XYO_NETWORKING_EXPORT bool getIPAddress6(IPAddress6 &);
-
-			XYO_NETWORKING_EXPORT void becomeOwner(Socket &socket_);
-			XYO_NETWORKING_EXPORT void linkOwner(Socket &socket_);
-			XYO_NETWORKING_EXPORT void unLinkOwner();
-			XYO_NETWORKING_EXPORT void transferOwner(Socket &socket_);
+			
 	};
 };
 

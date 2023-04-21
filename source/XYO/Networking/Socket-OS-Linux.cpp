@@ -36,8 +36,7 @@ namespace XYO::Networking {
 		this_ = new Socket_();
 		this_->value = INVALID_SOCKET;
 		ipAddress = nullptr;
-		ipAddressIs6 = false;
-		linkOwner_ = nullptr;
+		ipAddressIs6 = false;		
 	};
 
 	Socket::~Socket() {
@@ -260,8 +259,7 @@ namespace XYO::Networking {
 
 		ipAddress = nullptr;
 		ipAddressIs6 = false;
-
-		unLinkOwner();
+		
 	};
 
 	size_t Socket::read(void *output, size_t ln) {
@@ -581,40 +579,7 @@ namespace XYO::Networking {
 		address_.copy(*(reinterpret_cast<IPAddress6 *>(ipAddress)));
 		return true;
 	};
-
-	void Socket::becomeOwner(Socket &socket_) {
-		close();
-		socket_.unLinkOwner();
-		this_->value = socket_.this_->value;
-		socket_.this_->value = INVALID_SOCKET;
-	};
-
-	void Socket::linkOwner(Socket &socket_) {
-		close();
-		socket_.unLinkOwner();
-		this_->value = socket_.this_->value;
-		linkOwner_ = &socket_;
-		socket_.linkOwner_ = this;
-	};
-
-	void Socket::unLinkOwner() {
-		if (linkOwner_ != nullptr) {
-			linkOwner_->this_->value = INVALID_SOCKET;
-			linkOwner_->linkOwner_ = nullptr;
-			linkOwner_ = nullptr;
-		};
-	};
-
-	void Socket::transferOwner(Socket &socket_) {
-		close();
-		this_->value = socket_.this_->value;
-		linkOwner_ = socket_.linkOwner_;
-		socket_.this_->value = INVALID_SOCKET;
-		socket_.linkOwner_ = nullptr;
-		if (linkOwner_) {
-			linkOwner_->linkOwner_ = this;
-		};
-	};
+	
 };
 
 #endif
