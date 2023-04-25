@@ -29,7 +29,7 @@ namespace XYO::Networking {
 			XYO_DISALLOW_COPY_ASSIGN_MOVE(Socket);
 
 		protected:
-			Socket_ *this_;			
+			Socket_ *this_;
 			IPAddress_ *ipAddress;
 			bool ipAddressIs6;
 
@@ -44,6 +44,7 @@ namespace XYO::Networking {
 			XYO_NETWORKING_EXPORT bool openServer(IPAddress6 &adr_);
 			XYO_NETWORKING_EXPORT bool listen(uint16_t queue_);
 			XYO_NETWORKING_EXPORT bool accept(Socket &socket_);
+			XYO_NETWORKING_EXPORT void shutdown();
 			XYO_NETWORKING_EXPORT void close();
 
 			XYO_NETWORKING_EXPORT size_t read(void *output, size_t ln);
@@ -58,7 +59,6 @@ namespace XYO::Networking {
 			XYO_NETWORKING_EXPORT bool isIPAddress6();
 			XYO_NETWORKING_EXPORT bool getIPAddress4(IPAddress4 &);
 			XYO_NETWORKING_EXPORT bool getIPAddress6(IPAddress6 &);
-			
 	};
 };
 

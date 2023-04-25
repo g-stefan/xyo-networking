@@ -36,7 +36,7 @@ namespace XYO::Networking {
 		this_ = new Socket_();
 		this_->value = INVALID_SOCKET;
 		ipAddress = nullptr;
-		ipAddressIs6 = false;		
+		ipAddressIs6 = false;
 	};
 
 	Socket::~Socket() {
@@ -242,9 +242,17 @@ namespace XYO::Networking {
 		return false;
 	};
 
+	void Socket::shutdown() {
+		if (this_->value = INVALID_SOCKET) {
+			return;
+		};
+
+		::shutdown(this_->value, 2);
+	};
+
 	void Socket::close() {
 		if (this_->value != INVALID_SOCKET) {
-			shutdown(this_->value, 2);
+			Socket::shutdown();
 			closesocket(this_->value);
 			this_->value = INVALID_SOCKET;
 		};
@@ -259,7 +267,6 @@ namespace XYO::Networking {
 
 		ipAddress = nullptr;
 		ipAddressIs6 = false;
-		
 	};
 
 	size_t Socket::read(void *output, size_t ln) {
@@ -579,7 +586,7 @@ namespace XYO::Networking {
 		address_.copy(*(reinterpret_cast<IPAddress6 *>(ipAddress)));
 		return true;
 	};
-	
+
 };
 
 #endif
