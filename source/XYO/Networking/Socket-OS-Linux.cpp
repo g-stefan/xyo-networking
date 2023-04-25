@@ -261,7 +261,7 @@ namespace XYO::Networking {
 
 		::shutdown(this_->value, 2);
 
-		socket_.this_->isShutdown = true;
+		this_->isShutdown = true;
 	};
 
 	void Socket::close() {
