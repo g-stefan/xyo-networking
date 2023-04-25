@@ -30,13 +30,11 @@ namespace XYO::Networking {
 	class Socket_ {
 		public:
 			int value;
-			bool isShutdown;
 	};
 
 	Socket::Socket() {
 		this_ = new Socket_();
 		this_->value = INVALID_SOCKET;
-		this_->isShutdown = true;
 		ipAddress = nullptr;
 		ipAddressIs6 = false;
 	};
@@ -47,7 +45,7 @@ namespace XYO::Networking {
 	};
 
 	Socket::operator bool() const {
-		return ((this_->value != INVALID_SOCKET) && (!this_->isShutdown));
+		return (this_->value != INVALID_SOCKET);
 	};
 
 	bool Socket::openClient(IPAddress4 &adr_) {
@@ -70,10 +68,8 @@ namespace XYO::Networking {
 		if (this_->value != INVALID_SOCKET) {
 			if (connect(this_->value, (struct sockaddr *)&addr, sizeof(struct sockaddr_in)) == 0) {
 				(reinterpret_cast<IPAddress4 *>(ipAddress))->copy(adr_);
-				this_->isShutdown = false;
 				return true;
 			};
-			this_->isShutdown = true;
 			closesocket(this_->value);
 			this_->value = INVALID_SOCKET;
 		};
@@ -109,10 +105,8 @@ namespace XYO::Networking {
 		if (this_->value != INVALID_SOCKET) {
 			if (connect(this_->value, (struct sockaddr *)&addr, sizeof(struct sockaddr_in6)) == 0) {
 				(reinterpret_cast<IPAddress6 *>(ipAddress))->copy(adr_);
-				this_->isShutdown = false;
 				return true;
 			};
-			this_->isShutdown = true;
 			closesocket(this_->value);
 			this_->value = INVALID_SOCKET;
 		};
@@ -144,10 +138,8 @@ namespace XYO::Networking {
 		if (this_->value != INVALID_SOCKET) {
 			if (bind(this_->value, (struct sockaddr *)&addr, sizeof(struct sockaddr_in)) == 0) {
 				(reinterpret_cast<IPAddress4 *>(ipAddress))->copy(adr_);
-				this_->isShutdown = false;
 				return true;
 			};
-			this_->isShutdown = true;
 			closesocket(this_->value);
 			this_->value = INVALID_SOCKET;
 		};
@@ -183,10 +175,8 @@ namespace XYO::Networking {
 		if (this_->value != INVALID_SOCKET) {
 			if (bind(this_->value, (struct sockaddr *)&addr, sizeof(struct sockaddr_in6)) == 0) {
 				(reinterpret_cast<IPAddress6 *>(ipAddress))->copy(adr_);
-				this_->isShutdown = false;
 				return true;
 			};
-			this_->isShutdown = true;
 			closesocket(this_->value);
 			this_->value = INVALID_SOCKET;
 		};
@@ -199,7 +189,7 @@ namespace XYO::Networking {
 	};
 
 	bool Socket::listen(uint16_t queue_) {
-		if (!*this) {
+		if (this_->value == INVALID_SOCKET) {
 			return false;
 		};
 		return ((::listen(this_->value, queue_)) != INVALID_SOCKET);
@@ -210,7 +200,7 @@ namespace XYO::Networking {
 
 		socklen_t _addrlen;
 
-		if (!*this) {
+		if (this_->value == INVALID_SOCKET) {
 			return false;
 		};
 
@@ -225,7 +215,6 @@ namespace XYO::Networking {
 			addr.sin6_family = AF_INET6;
 			socket_.this_->value = ::accept(this_->value, (struct sockaddr *)&addr, &_addrlen);
 			if (socket_.this_->value != INVALID_SOCKET) {
-				socket_.this_->isShutdown = false;
 				socket_.ipAddress = reinterpret_cast<IPAddress_ *>(new IPAddress6());
 				socket_.ipAddressIs6 = true;
 				(reinterpret_cast<IPAddress6 *>(socket_.ipAddress))->port = addr.sin6_port;
@@ -242,7 +231,6 @@ namespace XYO::Networking {
 			addr.sin_family = AF_INET;
 			socket_.this_->value = ::accept(this_->value, (struct sockaddr *)&addr, &_addrlen);
 			if (socket_.this_->value != INVALID_SOCKET) {
-				socket_.this_->isShutdown = false;
 				socket_.ipAddress = reinterpret_cast<IPAddress_ *>(new IPAddress4());
 				socket_.ipAddressIs6 = false;
 				(reinterpret_cast<IPAddress4 *>(socket_.ipAddress))->port = addr.sin_port;
@@ -260,8 +248,6 @@ namespace XYO::Networking {
 		};
 
 		::shutdown(this_->value, 2);
-
-		this_->isShutdown = true;
 	};
 
 	void Socket::close() {
@@ -285,7 +271,7 @@ namespace XYO::Networking {
 
 	size_t Socket::read(void *output, size_t ln) {
 		long int recvLn;
-		if (!*this) {
+		if (this_->value == INVALID_SOCKET) {
 			return 0;
 		};
 
@@ -301,7 +287,7 @@ namespace XYO::Networking {
 		long int ln = ln_;
 		long int sndln;
 
-		if (!*this) {
+		if (this_->value == INVALID_SOCKET) {
 			return 0;
 		};
 		if (ln_ == 0) { // keep alive
@@ -329,7 +315,7 @@ namespace XYO::Networking {
 		fd_set sock_set;
 		struct timeval timev;
 
-		if (!*this) {
+		if (this_->value == INVALID_SOCKET) {
 			return -1;
 		};
 
@@ -352,7 +338,7 @@ namespace XYO::Networking {
 		fd_set sock_set;
 		struct timeval timev;
 
-		if (!*this) {
+		if (this_->value == INVALID_SOCKET) {
 			return -1;
 		};
 
