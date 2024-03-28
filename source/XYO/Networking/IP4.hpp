@@ -13,7 +13,7 @@
 
 namespace XYO::Networking {
 	class IP4 : public Object {
-			XYO_DISALLOW_COPY_ASSIGN_MOVE(IP4);
+			XYO_PLATFORM_DISALLOW_COPY_ASSIGN_MOVE(IP4);
 
 		public:
 			uint8_t ip[4];

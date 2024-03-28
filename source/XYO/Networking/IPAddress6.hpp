@@ -15,7 +15,7 @@ namespace XYO::Networking {
 	using namespace XYO::ManagedMemory;
 
 	class IPAddress6 : public Object {
-			XYO_DISALLOW_COPY_ASSIGN_MOVE(IPAddress6);
+			XYO_PLATFORM_DISALLOW_COPY_ASSIGN_MOVE(IPAddress6);
 
 		public:
 			IP6 ip;

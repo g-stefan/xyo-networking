@@ -26,7 +26,7 @@ namespace XYO::Networking {
 
 	class Socket : public virtual IRead,
 	               public virtual IWrite {
-			XYO_DISALLOW_COPY_ASSIGN_MOVE(Socket);
+			XYO_PLATFORM_DISALLOW_COPY_ASSIGN_MOVE(Socket);
 
 		protected:
 			Socket_ *this_;

@@ -8,7 +8,7 @@
 #	include <XYO/Networking/Dependency.hpp>
 #endif
 
-#ifdef XYO_OS_LINUX
+#ifdef XYO_PLATFORM_OS_LINUX
 
 #	include <unistd.h>
 #	include <sys/types.h>

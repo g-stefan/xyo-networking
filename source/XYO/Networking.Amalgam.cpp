@@ -21,6 +21,6 @@
 #include <XYO/Networking/Socket-OS-Windows.cpp>
 #include <XYO/Networking/URL.cpp>
 
-#ifdef XYO_OS_WINDOWS
+#ifdef XYO_PLATFORM_OS_WINDOWS
 #	pragma comment(lib, "ws2_32.lib")
 #endif

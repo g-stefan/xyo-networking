@@ -14,7 +14,7 @@
 namespace XYO::Networking {
 
 	class IPAddress4 : public Object {
-			XYO_DISALLOW_COPY_ASSIGN_MOVE(IPAddress4);
+			XYO_PLATFORM_DISALLOW_COPY_ASSIGN_MOVE(IPAddress4);
 
 		public:
 			IP4 ip;

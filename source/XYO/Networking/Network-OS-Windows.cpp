@@ -8,7 +8,7 @@
 #	include <XYO/Networking/Dependency.hpp>
 #endif
 
-#ifdef XYO_OS_WINDOWS
+#ifdef XYO_PLATFORM_OS_WINDOWS
 
 #	define WIN32_LEAN_AND_MEAN
 #	include <windows.h>

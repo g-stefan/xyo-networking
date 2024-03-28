@@ -14,7 +14,7 @@
 namespace XYO::Networking {
 
 	class IP6 : public Object {
-			XYO_DISALLOW_COPY_ASSIGN_MOVE(IP6);
+			XYO_PLATFORM_DISALLOW_COPY_ASSIGN_MOVE(IP6);
 
 		public:
 			uint8_t ip[16];
