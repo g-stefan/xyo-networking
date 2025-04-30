@@ -1,7 +1,7 @@
 // Networking
-// Copyright (c) 2016-2024 Grigore Stefan <g_stefan@yahoo.com>
+// Copyright (c) 2016-2025 Grigore Stefan <g_stefan@yahoo.com>
 // MIT License (MIT) <http://opensource.org/licenses/MIT>
-// SPDX-FileCopyrightText: 2016-2024 Grigore Stefan <g_stefan@yahoo.com>
+// SPDX-FileCopyrightText: 2016-2025 Grigore Stefan <g_stefan@yahoo.com>
 // SPDX-License-Identifier: MIT
 
 #ifndef XYO_NETWORKING_DEPENDENCY_HPP
@@ -385,15 +385,15 @@ namespace XYO::Networking {
 		};
 		urlAddress = urlHostAndPort;
 		if (!urlHostAndPort.split2FromEnd(":", urlAddress, urlPort)) {
-			if (urlSchemeName.matchAscii("http")) {
+			if (urlSchemeName.matchASCII("http")) {
 				urlPort = "80";
-			} else if (urlSchemeName.matchAscii("https")) {
+			} else if (urlSchemeName.matchASCII("https")) {
 				urlPort = "443";
-			} else if (urlSchemeName.matchAscii("ftp")) {
+			} else if (urlSchemeName.matchASCII("ftp")) {
 				urlPort = "20";
-			} else if (urlSchemeName.matchAscii("ssh")) {
+			} else if (urlSchemeName.matchASCII("ssh")) {
 				urlPort = "22";
-			} else if (urlSchemeName.matchAscii("telnet")) {
+			} else if (urlSchemeName.matchASCII("telnet")) {
 				urlPort = "23";
 			} else {
 				return false;
@@ -483,15 +483,15 @@ namespace XYO::Networking {
 		};
 		urlAddress = urlHostAndPort;
 		if (!urlHostAndPort.split2FromEnd(":", urlAddress, urlPort)) {
-			if (urlSchemeName.matchAscii("http")) {
+			if (urlSchemeName.matchASCII("http")) {
 				urlPort = "80";
-			} else if (urlSchemeName.matchAscii("https")) {
+			} else if (urlSchemeName.matchASCII("https")) {
 				urlPort = "443";
-			} else if (urlSchemeName.matchAscii("ftp")) {
+			} else if (urlSchemeName.matchASCII("ftp")) {
 				urlPort = "20";
-			} else if (urlSchemeName.matchAscii("ssh")) {
+			} else if (urlSchemeName.matchASCII("ssh")) {
 				urlPort = "22";
-			} else if (urlSchemeName.matchAscii("telnet")) {
+			} else if (urlSchemeName.matchASCII("telnet")) {
 				urlPort = "23";
 			} else {
 				return false;

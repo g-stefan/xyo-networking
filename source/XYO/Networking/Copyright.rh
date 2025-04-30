@@ -1,13 +1,13 @@
 // Networking
-// Copyright (c) 2016-2024 Grigore Stefan <g_stefan@yahoo.com>
+// Copyright (c) 2016-2025 Grigore Stefan <g_stefan@yahoo.com>
 // MIT License (MIT) <http://opensource.org/licenses/MIT>
-// SPDX-FileCopyrightText: 2016-2024 Grigore Stefan <g_stefan@yahoo.com>
+// SPDX-FileCopyrightText: 2016-2025 Grigore Stefan <g_stefan@yahoo.com>
 // SPDX-License-Identifier: MIT
 
 #ifndef XYO_NETWORKING_COPYRIGHT_RH
 #define XYO_NETWORKING_COPYRIGHT_RH
 
-#define XYO_NETWORKING_COPYRIGHT "Copyright (c) 2016-2024 Grigore Stefan <g_stefan@yahoo.com>"
+#define XYO_NETWORKING_COPYRIGHT "Copyright (c) 2016-2025 Grigore Stefan <g_stefan@yahoo.com>"
 #define XYO_NETWORKING_PUBLISHER "Grigore Stefan"
 #define XYO_NETWORKING_COMPANY XYO_NETWORKING_PUBLISHER
 #define XYO_NETWORKING_CONTACT "g_stefan@yahoo.com"
