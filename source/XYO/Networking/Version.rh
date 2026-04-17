@@ -1,18 +1,18 @@
 // Networking
-// Copyright (c) 2016-2025 Grigore Stefan <g_stefan@yahoo.com>
+// Copyright (c) 2016-2026 Grigore Stefan <g_stefan@yahoo.com>
 // MIT License (MIT) <http://opensource.org/licenses/MIT>
-// SPDX-FileCopyrightText: 2016-2025 Grigore Stefan <g_stefan@yahoo.com>
+// SPDX-FileCopyrightText: 2016-2026 Grigore Stefan <g_stefan@yahoo.com>
 // SPDX-License-Identifier: MIT
 
 #ifndef XYO_NETWORKING_VERSION_RH
 #define XYO_NETWORKING_VERSION_RH
 
 #ifndef XYO_NETWORKING_NO_VERSION
-#define XYO_NETWORKING_VERSION_ABCD 5,4,0,12
-#define XYO_NETWORKING_VERSION_STR "5.4.0"
+#define XYO_NETWORKING_VERSION_ABCD 5,5,0,12
+#define XYO_NETWORKING_VERSION_STR "5.5.0"
 #define XYO_NETWORKING_VERSION_STR_BUILD "12"
-#define XYO_NETWORKING_VERSION_STR_DATETIME "2025-10-06 20:48:47"
-#define XYO_NETWORKING_VERSION_STR_WITH_BUILD "5.4.0.12"
+#define XYO_NETWORKING_VERSION_STR_DATETIME "2026-04-07 00:31:19"
+#define XYO_NETWORKING_VERSION_STR_WITH_BUILD "5.5.0.12"
 #else
 #define XYO_NETWORKING_VERSION_ABCD 0,0,0,0
 #define XYO_NETWORKING_VERSION_STR "0.0.0"
