@@ -237,7 +237,7 @@ namespace XYO::Networking {
 	};
 
 	void Socket::shutdown() {
-		if (this_->value = INVALID_SOCKET) {
+		if (this_->value == INVALID_SOCKET) {
 			return;
 		};
 
@@ -313,8 +313,8 @@ namespace XYO::Networking {
 			return -1;
 		}
 
-		timev.tv_sec = (microSeconds / 3600);
-		timev.tv_usec = (microSeconds % 3600);
+		timev.tv_sec = (microSeconds / (1000*1000));
+		timev.tv_usec = (microSeconds % (1000*1000));
 		FD_ZERO(&sock_set);
 		FD_SET(this_->value, &sock_set);
 		ret = select(1, nullptr, &sock_set, nullptr, &timev);
@@ -336,8 +336,8 @@ namespace XYO::Networking {
 			return -1;
 		}
 
-		timev.tv_sec = (microSeconds / 3600);
-		timev.tv_usec = (microSeconds % 3600);
+		timev.tv_sec = (microSeconds / (1000*1000));
+		timev.tv_usec = (microSeconds % (1000*1000));
 		FD_ZERO(&sock_set);
 		FD_SET(this_->value, &sock_set);
 		ret = select(1, &sock_set, nullptr, nullptr, &timev);
@@ -409,14 +409,14 @@ namespace XYO::Networking {
 		hints.ai_socktype = SOCK_STREAM;
 		hints.ai_flags = 0;
 		hints.ai_protocol = 0;
-		hints.ai_canonname = NULL;
-		hints.ai_addr = NULL;
-		hints.ai_next = NULL;
+		hints.ai_canonname = nullptr;
+		hints.ai_addr = nullptr;
+		hints.ai_next = nullptr;
 
 		if (getaddrinfo(urlAddress, nullptr, &hints, &result) != 0) {
 			return false;
 		};
-		for (scan = result; scan != NULL; scan = scan->ai_next) {
+		for (scan = result; scan != nullptr; scan = scan->ai_next) {
 			if (scan->ai_family == AF_INET) {
 				IPAddress4 adr;
 				adr.port = port;
@@ -507,14 +507,14 @@ namespace XYO::Networking {
 		hints.ai_socktype = SOCK_STREAM;
 		hints.ai_flags = AI_PASSIVE;
 		hints.ai_protocol = 0;
-		hints.ai_canonname = NULL;
-		hints.ai_addr = NULL;
-		hints.ai_next = NULL;
+		hints.ai_canonname = nullptr;
+		hints.ai_addr = nullptr;
+		hints.ai_next = nullptr;
 
 		if (getaddrinfo(urlAddress, nullptr, &hints, &result) != 0) {
 			return false;
 		};
-		for (scan = result; scan != NULL; scan = scan->ai_next) {
+		for (scan = result; scan != nullptr; scan = scan->ai_next) {
 			if (scan->ai_family == AF_INET) {
 				IPAddress4 adr;
 				adr.port = port;
