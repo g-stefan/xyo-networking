@@ -20,6 +20,8 @@ namespace XYO::Networking {
 		public:
 			IP6 ip;
 			uint16_t port;
+			// Interface index, required for link-local addresses (fe80::/10), 0 if not used
+			uint32_t scopeId;
 
 			XYO_NETWORKING_EXPORT IPAddress6();
 			XYO_NETWORKING_EXPORT void copy(IPAddress6 &addr);

@@ -1,5 +1,6 @@
 {
 	"solution": {
+		"namespace" : "xyo",
 		"name" : "xyo-networking",
 		"type" : "xyo-cpp",
 		"projects": [

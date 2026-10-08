@@ -11,11 +11,11 @@
 #	include <XYO/Networking/Dependency.hpp>
 #endif
 
-#ifndef XYO_NETWORKING_IPADRESS4_HPP
+#ifndef XYO_NETWORKING_IPADDRESS4_HPP
 #	include <XYO/Networking/IPAddress4.hpp>
 #endif
 
-#ifndef XYO_NETWORKING_IPADRESS6_HPP
+#ifndef XYO_NETWORKING_IPADDRESS6_HPP
 #	include <XYO/Networking/IPAddress6.hpp>
 #endif
 

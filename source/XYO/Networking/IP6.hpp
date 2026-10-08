@@ -4,8 +4,8 @@
 // SPDX-FileCopyrightText: 2016-2026 Grigore Stefan <g_stefan@yahoo.com>
 // SPDX-License-Identifier: MIT
 
-#ifndef XYO_NETWORING_IP6_HPP
-#define XYO_NETWORING_IP6_HPP
+#ifndef XYO_NETWORKING_IP6_HPP
+#define XYO_NETWORKING_IP6_HPP
 
 #ifndef XYO_NETWORKING_DEPENDENCY_HPP
 #	include <XYO/Networking/Dependency.hpp>

@@ -19,6 +19,7 @@
 #include <XYO/Networking/Network-OS-Windows.cpp>
 #include <XYO/Networking/Socket-OS-Linux.cpp>
 #include <XYO/Networking/Socket-OS-Windows.cpp>
+#include <XYO/Networking/Socket.cpp>
 #include <XYO/Networking/URL.cpp>
 
 #ifdef XYO_PLATFORM_OS_WINDOWS

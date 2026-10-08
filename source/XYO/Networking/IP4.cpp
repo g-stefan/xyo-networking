@@ -14,24 +14,12 @@ namespace XYO::Networking {
 
 	uint32_t IP4::toU32() {
 		uint32_t retV;
-		retV = ip[3];
-		retV <<= 8;
-		retV |= ip[2];
-		retV <<= 8;
-		retV |= ip[1];
-		retV <<= 8;
-		retV |= ip[0];
+		memcpy(&retV, &ip[0], 4);
 		return retV;
 	};
 
 	void IP4::fromU32(uint32_t ip_) {
-		ip[0] = (uint8_t)(ip_ & 0x000000FF);
-		ip_ >>= 8;
-		ip[1] = (uint8_t)(ip_ & 0x000000FF);
-		ip_ >>= 8;
-		ip[2] = (uint8_t)(ip_ & 0x000000FF);
-		ip_ >>= 8;
-		ip[3] = (uint8_t)(ip_ & 0x000000FF);
+		memcpy(&ip[0], &ip_, 4);
 	};
 
 	void IP4::copy(IP4 &ip_) {

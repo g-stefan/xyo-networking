@@ -14,11 +14,12 @@ namespace XYO::Networking::URL {
 		size_t k;
 		for (k = 0; k < value.length(); ++k) {
 			if (value[k] == '%') {
-				if (k + 2 < value.length()) {
+				// Invalid or incomplete escape is kept as is
+				if ((k + 2 < value.length()) && THex<char>::isValid(value[k + 1]) && THex<char>::isValid(value[k + 2])) {
 					out->concatenateX(THex<char>::decode(value[k + 1]) << 4 | THex<char>::decode(value[k + 2]));
 					k += 2;
+					continue;
 				};
-				continue;
 			};
 			out->concatenateX(value[k]);
 		};
@@ -31,7 +32,7 @@ namespace XYO::Networking::URL {
 		size_t k;
 		for (k = 0; k < value.length(); ++k) {
 			if (
-			    (value[k] >= 'A' && value[k] <= 'Z') || (value[k] >= 'a' && value[k] <= 'z') || (value[k] >= '0' && value[k] <= '9') || (value[k] == '_') || (value[k] == '.') || (value[k] == '!') || (value[k] == '~') || (value[k] == '*') || (value[k] == '\'') || (value[k] == '(') || (value[k] == ')')) {
+			    (value[k] >= 'A' && value[k] <= 'Z') || (value[k] >= 'a' && value[k] <= 'z') || (value[k] >= '0' && value[k] <= '9') || (value[k] == '-') || (value[k] == '_') || (value[k] == '.') || (value[k] == '!') || (value[k] == '~') || (value[k] == '*') || (value[k] == '\'') || (value[k] == '(') || (value[k] == ')')) {
 				out->concatenateX(value[k]);
 				continue;
 			};
@@ -42,84 +43,121 @@ namespace XYO::Networking::URL {
 		return out;
 	};
 
+	// Scheme is ALPHA *( ALPHA / DIGIT / "+" / "-" / "." ) followed by "://"
+	static bool getSchemeLength(const String &url, size_t &length) {
+		size_t k;
+		char x;
+		for (k = 0; k < url.length(); ++k) {
+			x = url[k];
+			if (((x >= 'A') && (x <= 'Z')) || ((x >= 'a') && (x <= 'z'))) {
+				continue;
+			};
+			if ((k > 0) && (((x >= '0') && (x <= '9')) || (x == '+') || (x == '-') || (x == '.'))) {
+				continue;
+			};
+			break;
+		};
+		if ((k == 0) || (k + 2 >= url.length())) {
+			return false;
+		};
+		if ((url[k] != ':') || (url[k + 1] != '/') || (url[k + 2] != '/')) {
+			return false;
+		};
+		length = k;
+		return true;
+	};
+
 	bool getSchemeName(const String &url, String &out) {
-		size_t index;
-		if (StringCore::indexOf(url, "://", index)) {
-			out = url.substring(0, index);
+		size_t length;
+		if (getSchemeLength(url, length)) {
+			out = url.substring(0, length);
 			return true;
 		};
 		return false;
 	};
 
+	// Authority is the part after "://" up to the first '/', '?' or '#'
+	static bool getAuthority(const String &url, size_t &start, size_t &end) {
+		if (!getSchemeLength(url, start)) {
+			return false;
+		};
+		start += 3;
+		for (end = start; end < url.length(); ++end) {
+			if ((url[end] == '/') || (url[end] == '?') || (url[end] == '#')) {
+				break;
+			};
+		};
+		return true;
+	};
+
 	bool getHostNameAndPort(const String &url, String &out) {
-		size_t index;
-		size_t part;
+		size_t start;
+		size_t end;
 		String firstPart;
 		String secondPart;
-		if (StringCore::indexOf(url, "://", index)) {
-			if (StringCore::indexOf(url, "/", index + 3, part)) {
-				if (url.substring(index + 3, part - (index + 3)).split2("@", firstPart, secondPart)) {
-					out = secondPart;
-					return true;
-				};
-				out = url.substring(index + 3, part - (index + 3));
+		if (getAuthority(url, start, end)) {
+			String authority = url.substring(start, end - start);
+			if (authority.split2FromEnd("@", firstPart, secondPart)) {
+				out = secondPart;
 				return true;
 			};
-			out = url.substring(index + 3);
+			out = authority;
 			return true;
 		};
 		return false;
 	};
 
 	bool getUsernameAndPassword(const String &url, String &out) {
-		size_t index;
-		size_t part;
+		size_t start;
+		size_t end;
 		String firstPart;
 		String secondPart;
-		if (StringCore::indexOf(url, "://", index)) {
-			if (StringCore::indexOf(url, "/", index + 3, part)) {
-				if (url.substring(index + 3, part - (index + 3)).split2("@", firstPart, secondPart)) {
-					out = firstPart;
-					return true;
-				};
+		if (getAuthority(url, start, end)) {
+			if (url.substring(start, end - start).split2FromEnd("@", firstPart, secondPart)) {
+				out = firstPart;
+				return true;
 			};
 		};
 		return false;
 	};
 
 	bool getPathAndFileName(const String &url, String &out) {
-		size_t index;
-		size_t part;
-		String firstPart;
-		String secondPart;
-		if (StringCore::indexOf(url, "://", index)) {
-			if (StringCore::indexOf(url, "/", index + 3, part)) {
-				if (url.substring(part).split2("?", firstPart, secondPart)) {
-					out = firstPart;
-					return true;
+		size_t start;
+		size_t end;
+		size_t k;
+		if (getAuthority(url, start, end)) {
+			for (k = end; k < url.length(); ++k) {
+				if ((url[k] == '?') || (url[k] == '#')) {
+					break;
 				};
-				out = url.substring(part);
+			};
+			if (k == end) {
+				out = "/";
 				return true;
 			};
-			out = "/";
+			out = url.substring(end, k - end);
 			return true;
 		};
 		return false;
 	};
 
 	bool getQuery(const String &url, String &out) {
-		size_t index;
-		size_t part;
-		String firstPart;
-		String secondPart;
-		String thirdPart;
-		if (url.indexOf("://", 0, index)) {
-			if (StringCore::indexOf(url, "/", index + 3, part)) {
-				if (url.substring(part + 1).split2("?", firstPart, secondPart)) {
-					if (secondPart.split2("#", firstPart, thirdPart)) {
-						out = firstPart;
-						return true;
+		size_t start;
+		size_t end;
+		size_t k;
+		if (getAuthority(url, start, end)) {
+			for (; end < url.length(); ++end) {
+				if (url[end] == '#') {
+					return false;
+				};
+				if (url[end] == '?') {
+					for (k = end + 1; k < url.length(); ++k) {
+						if (url[k] == '#') {
+							break;
+						};
 					};
+					out = url.substring(end + 1, k - (end + 1));
+					return true;
 				};
 			};
 		};

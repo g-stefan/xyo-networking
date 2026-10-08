@@ -4,8 +4,8 @@
 // SPDX-FileCopyrightText: 2016-2026 Grigore Stefan <g_stefan@yahoo.com>
 // SPDX-License-Identifier: MIT
 
-#ifndef XYO_NETWORING_IP4_HPP
-#define XYO_NETWORING_IP4_HPP
+#ifndef XYO_NETWORKING_IP4_HPP
+#define XYO_NETWORKING_IP4_HPP
 
 #ifndef XYO_NETWORKING_DEPENDENCY_HPP
 #	include <XYO/Networking/Dependency.hpp>
@@ -19,6 +19,7 @@ namespace XYO::Networking {
 			uint8_t ip[4];
 
 			XYO_NETWORKING_EXPORT IP4();
+			// Network byte order, same as in_addr.s_addr
 			XYO_NETWORKING_EXPORT uint32_t toU32();
 			XYO_NETWORKING_EXPORT void fromU32(uint32_t ip_);
 			XYO_NETWORKING_EXPORT void copy(IP4 &ip_);
